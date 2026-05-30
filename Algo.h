@@ -18,15 +18,11 @@ namespace Algo{
         vector<GraphNode*> neighbors; // vector of neighbor pointers
 };*/
     //GraphNode* constructGraph(double adjMatrix[100][100]);
-    
-    
-    
-    
     PathNode* F_minInQueue(vector<PathNode*> vec);
     PathNode* findMatchinQueue(vector<PathNode*> vec, int match);
     PathNode* constructPath(PathNode* end);
-    
-    
+    void buildWeightMatrix(int grid[100][100],int m,int n, double weightMatrix[100][100]);
+
     
     PathNode* findSocialPath(double adjMatrix[100][100], int startPerson, int goalPerson);
     PathNode* findDronePath(double weightMatrix[100][100], int coords[100][2],

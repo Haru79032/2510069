@@ -1,5 +1,14 @@
 #include "PathNode.h"
 
+dir directions;
+
+template <typename T>
+void printVector(vector<T> vec){
+    for (const auto&a : vec){
+        cout << a << " ";
+    }
+    cout << '\n';
+}
 void printPath(PathNode* start){
     PathNode* ite=start;
     while (ite!=nullptr){
@@ -29,12 +38,19 @@ double heuristicalBFS(double adjMatrix[100][100], int startPoint, int endPoint){
     }
     return 0.0; // no path found
 }
-double Mah_Euc_Chev_heu(double adjMatrix[100][100], int coords[100][2], int startPoint, int endPoint, int mode){
+double Mah_Euc_Chev_heu(int coords[100][2], int startPoint, int endPoint, int mode){
     if (mode==1){
         return abs(coords[startPoint][0]-coords[endPoint][0]) + abs(coords[startPoint][1]-coords[endPoint][1]);
     }else if (mode==2){
         return sqrt(pow(coords[startPoint][0]-coords[endPoint][0],2)+pow(coords[startPoint][1]-coords[endPoint][1],2));
     }else if (mode==3){
         return max(abs(coords[startPoint][0]-coords[endPoint][0]),abs(coords[startPoint][1]-coords[endPoint][1]));
+    }else return -1;
+}
+double Mah_Chev_heu(int startX, int startY, int endX, int endY, int mode){
+    if (mode==1){
+        return abs(startX-endX) + abs(startY-endY);
+    }else if (mode==2){
+        return max(abs(startX-endX),abs(startY-endY));
     }else return -1;
 }
